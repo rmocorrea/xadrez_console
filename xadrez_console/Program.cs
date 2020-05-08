@@ -7,12 +7,10 @@ namespace xadrez_console
     {
         static void Main(string[] args)
         {
-            /* Posicao P;
-             P = new Posicao(3, 4);
-             */
+           
+            Tabuleiro tab = new Tabuleiro(5, 5);
 
-            Tabuleiro Tab = new Tabuleiro(0, 8);
-
+            Tela.imprimirTabuleiro(tab);
             
         }
     }
