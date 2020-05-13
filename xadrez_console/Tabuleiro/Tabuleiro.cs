@@ -2,6 +2,7 @@
 {
     class Tabuleiro
     {
+
         public int linhas { get; set; }
         public int colunas { get; set; }
         private Peca[,] pecas;
@@ -25,7 +26,7 @@
 
         public bool existePeca(Posicao pos)
         {
-            validaPosicao(pos);
+            validarPosicao(pos);
             return peca(pos) != null;
         }
 
@@ -39,16 +40,28 @@
             p.posicao = pos;
         }
 
+        public Peca retirarPeca(Posicao pos)
+        {
+            if (peca(pos) == null)
+            {
+                return null;
+            }
+            Peca aux = peca(pos);
+            aux.posicao = null;
+            pecas[pos.linha, pos.coluna] = null;
+            return aux;
+        }
+
         public bool posicaoValida(Posicao pos)
         {
-           if(pos.linha<0 || pos.linha>=linhas || pos.coluna<0 || pos.coluna >= colunas)
+            if (pos.linha < 0 || pos.linha >= linhas || pos.coluna < 0 || pos.coluna >= colunas)
             {
                 return false;
             }
             return true;
         }
 
-        public void validaPosicao(Posicao pos)
+        public void validarPosicao(Posicao pos)
         {
             if (!posicaoValida(pos))
             {
